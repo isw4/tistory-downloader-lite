@@ -119,7 +119,7 @@ public class MainModel {
 		BufferedWriter bw = null;
 		
 		try {
-			bw = new BufferedWriter(new FileWriter(new File("res\\defaultdest")));
+			bw = new BufferedWriter(new FileWriter(new File("res\\defaultdest.txt")));
 			bw.write(defaultDest);
 			bw.flush();
 			bw.close();

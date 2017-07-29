@@ -52,17 +52,18 @@ public class Util {
 		//downloading all wanted images
 		int m = 0;
 		String n = String.valueOf(wantedImages.size());
-		String source, finalDest;
+		String source, filename, finalDest;
 		for(Element item : wantedImages) {
 			//replaces "image" by "original" since that is usually a better resolution picture
 			source = item.attr("src");
 			source = source.replace("image", "original");
 			
 			//forms destination with the filename of the image
-			finalDest = folderDestination + item.attr("filename");
+			filename = item.attr("filename");
+			if (filename.isEmpty()) filename = String.valueOf(m+1) + ".jpg";
+			finalDest = folderDestination + filename;
+			System.out.println("Downloading " + String.valueOf(++m) + "/" + n + "...");
 			
-			System.out.print("Downloading " + String.valueOf(++m) + "/" + n + "...");
-
 			//downloads single image
 			pull(source, finalDest);
 		}
